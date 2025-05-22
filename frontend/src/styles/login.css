@@ -1,0 +1,351 @@
+/* Base styles */
+:root {
+  --primary: #0070f3;
+  --primary-hover: #0051a8;
+  --background: #f4f4f5;
+  --card-background: #ffffff;
+  --text: #18181b;
+  --text-muted: #71717a;
+  --border: #e4e4e7;
+  --input-background: #ffffff;
+  --input-border: #d4d4d8;
+  --input-focus: #0070f3;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --radius: 0.5rem;
+  --success: #10b981;
+  --error: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Card */
+.card {
+  background-color: var(--card-background);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .card {
+    flex-direction: row;
+  }
+}
+
+.card-content {
+  padding: 0;
+  flex: 1;
+}
+
+.card-image {
+  display: none;
+  position: relative;
+  flex: 1;
+  background-color: var(--background);
+}
+
+@media (min-width: 768px) {
+  .card-image {
+    display: block;
+  }
+}
+
+.card-image img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+
+/* Form */
+.form {
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .form {
+    padding: 2rem;
+  }
+}
+
+.form.active {
+  display: flex;
+}
+
+.form-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.form-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: var(--text-muted);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.password-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot-password {
+  font-size: 0.875rem;
+}
+
+label {
+  font-weight: 500;
+}
+
+input {
+  padding: 0.625rem;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius);
+  background-color: var(--input-background);
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.2);
+}
+
+/* Password input wrapper */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  padding-right: 2.5rem;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  padding: 0.25rem;
+}
+
+.password-toggle:hover {
+  color: var(--text);
+}
+
+.password-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Password requirements */
+.password-requirements {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.password-requirements p {
+  margin-bottom: 0.25rem;
+}
+
+.password-requirements ul {
+  list-style-type: none;
+  padding-left: 0.5rem;
+}
+
+.password-requirements li {
+  margin-bottom: 0.25rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.password-requirements li::before {
+  content: "•";
+  position: absolute;
+  left: 0.5rem;
+}
+
+.password-requirements li.valid {
+  color: var(--success);
+}
+
+.password-requirements li.valid::before {
+  content: "✓";
+}
+
+.password-requirements li.invalid {
+  color: var(--error);
+}
+
+.password-requirements li.invalid::before {
+  content: "✗";
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn-outline:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Divider */
+.divider {
+  position: relative;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin: 0.5rem 0;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--border);
+  z-index: 0;
+}
+
+.divider span {
+  position: relative;
+  z-index: 1;
+  background-color: var(--card-background);
+  padding: 0 0.5rem;
+}
+
+/* Social buttons */
+.social-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Form footer */
+.form-footer {
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* Terms */
+.terms {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  max-width: 600px;
+}
