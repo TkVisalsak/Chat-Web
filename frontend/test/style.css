@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial;
+}
+#sidebar {
+  width: 200px;
+  background: #f0f0f0;
+  overflow-y: auto;
+  padding: 10px;
+}
+#chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+#messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+.message {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 5px;
+}
+#message-form {
+  display: flex;
+  gap: 5px;
+  padding: 10px;
+}
