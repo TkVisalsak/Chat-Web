@@ -9,7 +9,8 @@ import cors from "cors";
 import messageRoutes from "./routes/message.route.js";
 import { app, server } from "./lib/socket.js";
 import passport from "passport";
-
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
@@ -34,8 +35,12 @@ app.use("/api/messages", messageRoutes);
 
 // Connect to DB and start the server
 connectDB();
-const HOST = process.env.PORT ? "0.0.0.0" : "127.0.0.1";
+const HOST = '127.0.0.1'; // match this to your frontend host
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, "../frontend/public")));
 
 server.listen(PORT, HOST, () => {
   console.log(`Server is running at http://${HOST}:${PORT}`);
