@@ -34,8 +34,7 @@ app.use("/api/messages", messageRoutes);
 
 // Connect to DB and start the server
 connectDB();
-const HOST = '127.0.0.1'; // match this to your frontend host
-
+const HOST = process.env.PORT ? "0.0.0.0" : "127.0.0.1";
 
 
 server.listen(PORT, HOST, () => {
