@@ -15,11 +15,18 @@
         <input type="text" id="message-input" placeholder="Type your message..." />
         <input type="file" id="image-input" />
         <button type="submit">Send</button>
+        <button id="log-out" type="submit">Log out</button>
       </form>
     </main>
   </div>
 
   <script src="http://127.0.0.1:5001/socket.io/socket.io.js"></script>
   <script type="module" src="chat.js"></script>
+  <!-- <script> document.getElementById('log-out').addEventListener('click', function () {
+      fetch("http://127.0.0.1:5001/api/auth/logout", {
+  method: "POST",
+  credentials: "include"
+});
+});</script> -->
 </body>
 </html>

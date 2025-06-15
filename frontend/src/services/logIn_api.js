@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(data),
       })
 
@@ -134,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showSuccess("login-password")
 
         setTimeout(() => {
-          location.href = `${BASE_URL}/frontend/test/index.html`
+        window.location.href='/frontend/test/index.html'
         }, 1000)
       } else {
         // Show single error message under password field and make both fields red

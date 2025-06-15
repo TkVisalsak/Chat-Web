@@ -1,5 +1,6 @@
+import { BASE_URL } from "../src/lib/config.js";
+const socket = io(`${BASE_URL}`);
 
-const socket = io("http://127.0.0.1:5001");
 let selectedUserId = null;
 
 const sidebar = document.getElementById("sidebar");
@@ -10,7 +11,8 @@ const imageInput = document.getElementById("image-input");
 
 // Fetch sidebar users
 async function loadUsers() {
-  const res = await fetch(`http://127.0.0.1:5001/api/messages/users`, {
+  const res = await fetch(`${BASE_URL}/api/messages/users`, {
+    method: 'GET',
     credentials: "include"
   });
   const users = await res.json();
@@ -29,7 +31,7 @@ async function loadUsers() {
 
 // Fetch chat history
 async function loadMessages(userId) {
-  const res = await fetch(`http://127.0.0.1:5001/api/messages/${userId}`, {
+  const res = await fetch(`${BASE_URL}/api/messages/${userId}`, {
     credentials: "include"
   });
   const messages = await res.json();
@@ -72,7 +74,7 @@ messageForm.addEventListener("submit", async (e) => {
 });
 
 async function sendMessage(text, image) {
-  const res = await fetch(`http://127.0.0.1:5001/api/messages/send/${selectedUserId}`, {
+  const res = await fetch(`${BASE_URL}/api/messages/send/${selectedUserId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",

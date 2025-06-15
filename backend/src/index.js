@@ -27,8 +27,6 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Parse JSON bodies
-app.use(express.json());
 
 // Use your auth routes
 app.use("/api/auth", authRoutes);
