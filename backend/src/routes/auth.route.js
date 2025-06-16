@@ -39,4 +39,6 @@ router.get(
 );
 router.post("/oAuthPersonal_info", protectAuthRoute, oAuthPersonal_info);
 
+
+
 export default router;
