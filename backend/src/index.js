@@ -36,8 +36,7 @@ app.use(cors({
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-// Serve frontend static files
-app.use(express.static(path.join(__dirname, "../frontend/public")));
+
 
 // SPA fallback (optional, if you use SPA frontend)
 // app.get("*", (req, res) => {
@@ -48,10 +47,13 @@ app.use(express.static(path.join(__dirname, "../frontend/public")));
 connectDB();
 
 
+const staticPath = path.resolve(__dirname, "../../frontend/public");
 
+app.use(express.static(staticPath));
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/public/index.html"));
+  res.sendFile(path.join(staticPath, "index.html"));
 });
+
 
 
 server.listen(PORT, HOST, () => {
