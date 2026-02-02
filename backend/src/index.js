@@ -56,15 +56,8 @@ app.use("/api/messages", messageRoutes);
 // Connect to DB and start the server
 connectDB();
 
-
-const staticPath = path.resolve(__dirname, "../../frontend/public");
-
-app.use(express.static(staticPath));
-app.get("/", (req, res) => {
-  res.sendFile(path.join(staticPath, "index.html"));
-});
-
-
+// In production on Render, the frontend is served by the separate Next.js service.
+// This backend only exposes API and websocket endpoints.
 
 server.listen(PORT, HOST, () => {
   console.log(`Server is running at http://${HOST}:${PORT}`);
