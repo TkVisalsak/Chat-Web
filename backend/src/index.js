@@ -16,20 +16,30 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
-
 const PORT = process.env.PORT || 5001;
 const HOST = process.env.PORT ? "0.0.0.0" : "127.0.0.1";
 
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({
-  origin: ['http://127.0.0.1:5500' , 'http://127.0.0.1:5501'],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+  "http://localhost:5501",
+  "http://localhost:5502",
+  "http://127.0.0.1:5501",
+  "http://127.0.0.1:5502",
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
 
 
 // Use your auth routes
